@@ -139,7 +139,7 @@ println(dateDTO.month)
 println(dateDTO.dayOfMonth)
 ```
 
-##Timestamp
+## Timestamp
 
 to get date timestamp use `getTimestamp()` method.
 

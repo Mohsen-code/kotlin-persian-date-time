@@ -140,6 +140,7 @@ println(dateDTO.dayOfMonth)
 ```
 
 ##Timestamp
+
 to get date timestamp use `getTimestamp()` method.
 
 example:

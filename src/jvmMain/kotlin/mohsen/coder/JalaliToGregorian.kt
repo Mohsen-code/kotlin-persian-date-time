@@ -2,15 +2,18 @@ package mohsen.coder
 
 class JalaliToGregorian {
 
-    var gregorianYear = 0;
-    var gregorianMonth = 0;
+    var gregorianYear = 0
+        private set
+    var gregorianMonth = 0
+        private set
     var gregorianDayOfMonth = 0
+        private set
     private val gregorianMonths = arrayOf(30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 28, 31)
     private val gregorianMonthsLeap = arrayOf(30, 31, 30, 31, 31, 30, 31, 30, 31, 31, 29, 31)
 
     constructor(jalaliYear: Int, jalaliMonth: Int, jalaliDaysOfMonth: Int) {
         gregorianYear = jalaliYear + 621
-        var marchdaydiff = if (yearIsLeap(gregorianYear)) 12 else 11
+        val marchDayDiff = if (yearIsLeap(gregorianYear)) 12 else 11
         var dayCount = 0
 
         if (jalaliMonth in 1..6) {
@@ -19,11 +22,11 @@ class JalaliToGregorian {
             dayCount = (6 * 31) + (jalaliMonth - 7) * 30 + jalaliDaysOfMonth
         }
 
-        if (dayCount < marchdaydiff) {
-            gregorianDayOfMonth = dayCount + (31 - marchdaydiff)
+        if (dayCount < marchDayDiff) {
+            gregorianDayOfMonth = dayCount + (31 - marchDayDiff)
             gregorianMonth = 3
         } else {
-            var remainDays = dayCount - marchdaydiff
+            var remainDays = dayCount - marchDayDiff
             var i = 0
             if (yearIsLeap(gregorianYear + 1)) {
                 while (remainDays > gregorianMonths[i]) {

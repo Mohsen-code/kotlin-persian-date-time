@@ -3,20 +3,30 @@ package mohsen.coder
 class GregorianToJalali {
     // اختلاف روز های سال میلادی و شمسی در حالت کبیسه و غیر کبیسه 79 روز است
     private val farvardinDayDiff = 79
-    private var dayCount = 0;
-    var deyDayDiff = 0 // اختلاف روز اول دی ماه با اول ژانویه
-    var jalaliDayOfMonth = 0;
-    var jalaliMonth = 0;
-    var jalaliYear = 0
+//    private var pattern: String? = null
+    private var dayCount = 0
+    private var deyDayDiff = 0 // اختلاف روز اول دی ماه با اول ژانویه
+    var jalaliDayOfMonth: Int = 0
+        private set
+    var jalaliMonth: Int = 0
+        private set
+    var jalaliYear: Int = 0
+        private set
     private val sumDaysOfGregorianMonths = arrayOf(0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334)
     private val sumDaysOfGregorianMonthsLeap = arrayOf(0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335)
+
+
+
+    constructor(gregorianYear: Int, gregorianMonth: Int, gregorianDayOfMonth: Int) {
+        this.convertDate(gregorianYear, gregorianMonth, gregorianDayOfMonth)
+    }
 
     // مشخص می کند آیا سال کبیسه است یا نه
     private fun isYearLeap(gregorianYear: Int): Boolean {
         return ((gregorianYear % 100) != 0 && (gregorianYear % 4) == 0) || ((gregorianYear % 100) == 0 && (gregorianYear % 400) == 0)
     }
 
-    constructor(gregorianYear: Int, gregorianMonth: Int, gregorianDayOfMonth: Int) {
+    private fun convertDate(gregorianYear: Int, gregorianMonth: Int, gregorianDayOfMonth: Int){
         dayCount = if (isYearLeap(gregorianYear)) {
             sumDaysOfGregorianMonthsLeap[gregorianMonth - 1] + gregorianDayOfMonth
         } else {

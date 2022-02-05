@@ -18,7 +18,7 @@ allprojects {
 
 ```kotlin
 dependencies {
-    implementation 'com.github.Mohsen-code:kotlin-persian-date-time:-SNAPSHOT'
+    implementation 'com.github.Mohsen-code:kotlin-persian-date-time:0.1'
 }
 ```
 
